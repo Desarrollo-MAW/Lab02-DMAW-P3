@@ -17,7 +17,7 @@
             <div class="h-auto w-[25%] flex justify-start items-start bg-slate-100 rounded-3xl mt-10">
                 <div class="w-full p-10">
                     <!--Inicio del Bloque del Formulario-->
-                    <form method="POST">
+                    <form method="POST" action="../../ServletRegister">
                         <!-- Nombre -->
                         <div class="font-bold text-lg mr-3">
                             Nombre
