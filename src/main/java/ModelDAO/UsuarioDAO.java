@@ -18,7 +18,7 @@ public class UsuarioDAO implements IUsuarioCRUD {
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
-    Usuario usuario = new Usuario();
+    Usuario usu = new Usuario();
 
     @Override
     public List loginUser (Usuario user) {
@@ -41,6 +41,7 @@ public class UsuarioDAO implements IUsuarioCRUD {
                 list.add(usuario);
             }
         } catch (Exception e) {
+            
         }
         return list;
     }
