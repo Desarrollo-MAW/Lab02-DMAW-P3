@@ -9,9 +9,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registrarse</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-        <h1>Este es un registro</h1>
+        <div class="flex justify-center items-center">
+            <div class="h-auto w-[25%] flex justify-start items-start bg-slate-100 rounded-3xl mt-10">
+                <div class="w-full p-10">
+                    <!--Inicio del Bloque del Formulario-->
+                    <form method="POST" action="../../ServletRegister">
+                        <!-- Nombre -->
+                        <div class="font-bold text-lg mr-3">
+                            Nombre
+                        </div>
+                        <input class="w-full rounded-md focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="name">
+                        <!-- Apellido -->
+                        <div class="font-bold text-lg mr-3">
+                            Apellido
+                        </div>
+                        <input class="w-full rounded-md focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="lastname">
+                        <!-- Correo -->
+                        <div class="font-bold text-lg mr-3">
+                            Correo
+                        </div>
+                        <input class="w-full rounded-md focus:outline-none px-3 py-2 mt-2 mb-3" type="email" name="email">
+                        <!-- Password -->
+                        <div class="font-bold text-lg mr-3">
+                            Password
+                        </div>
+                        <input class="w-full rounded-md focus:outline-none px-3 py-2 mt-2 mb-10" type="password" name="password">
+                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="register" value="Registrarse">
+                    </form>
+                    <!--Fin del Bloque del Formulario-->
+                </div>
+            </div>
+        </div>
     </body>
 </html>

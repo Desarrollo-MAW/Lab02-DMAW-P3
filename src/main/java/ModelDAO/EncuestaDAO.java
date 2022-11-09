@@ -14,6 +14,7 @@ import java.util.List;
  * @author deuseli
  */
 public class EncuestaDAO implements IEncuestaCRUD {
+
     Connect cn = new Connect();
     Connection conn;
     PreparedStatement ps;
