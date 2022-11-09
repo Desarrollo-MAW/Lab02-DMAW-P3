@@ -53,7 +53,20 @@ public class UsuarioDAO implements IUsuarioCRUD {
 
     @Override
     public boolean addUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO usuario (nombre, apellido, correo, contra) VALUES(?, ?, ?, ?)";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getApellido());
+            ps.setString(3, usuario.getCorreo());
+            ps.setString(4, usuario.getContra());
+            ps.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            
+        }
+        return false;
     }
 
     @Override

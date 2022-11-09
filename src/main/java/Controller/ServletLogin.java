@@ -72,9 +72,12 @@ public class ServletLogin extends HttpServlet {
                     session.setAttribute("contra", userIterator.getContra());
                     session.setAttribute("nombre", userIterator.getNombre());
                     session.setAttribute("apellido", userIterator.getApellido());
-                    response.sendRedirect("");
+                    session.setAttribute("admin", userIterator.getAdmin().toString());
+                    session.setAttribute("id_usuario", userIterator.getId_usuario());
+                    response.sendRedirect("views/");
                 }
             }
+            
         }
         
     }

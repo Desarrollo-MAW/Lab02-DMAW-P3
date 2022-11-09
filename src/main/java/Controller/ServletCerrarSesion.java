@@ -36,7 +36,7 @@ public class ServletCerrarSesion extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        String url = "views/login";
+        String url = "views/login.jsp";
         
         response.sendRedirect(url);
         

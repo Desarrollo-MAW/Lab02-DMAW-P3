@@ -29,10 +29,14 @@
                             Password
                         </div>
                         <input class="w-full rounded-md focus:outline-none px-3 py-2 mt-2 mb-10" type="password" name="password">
-                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="login" value="Iniciar Sesión">
+                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md mb-5" type="submit" name="login" value="Iniciar Sesión">
+                        <div class="w-full flex flex-row justify-center items-center">
+                            <span>¿No tienes una cuenta?</span><a class="font-bold ml-2" href="register.jsp">Registrate ahora</a>
+                        </div>
                     </form>
                     <!--Fin del Bloque del Formulario-->
                 </div>
+
                 <div class="flex flex-col w-full p-10 pt-0">
                     <div class='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'>
                         <strong class='font-bold'>¡Error en inicio de sesión!</strong><br>
