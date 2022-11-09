@@ -21,20 +21,22 @@ public class UsuarioDAO implements IUsuarioCRUD {
     Usuario usuario = new Usuario();
 
     @Override
-    public List listUsuarios() {
+    public List loginUser (Usuario user) {
         ArrayList<Usuario> list = new ArrayList<>();
-        String sql = "SELECT * FROM usuario";
+        String sql = "SELECT * FROM usuario WHERE correo = ? AND contra = ?";
         try {
             conn = cn.getConnection();
             ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getCorreo());
+            ps.setString(2, user.getContra());
             rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario usuario = new Usuario();
                 usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setContra(rs.getString("contra"));
+                usuario.setCorreo(user.getCorreo());
+                usuario.setContra(user.getContra());
                 usuario.setAdmin(rs.getBoolean("admin"));
                 list.add(usuario);
             }
