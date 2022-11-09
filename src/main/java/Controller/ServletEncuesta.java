@@ -48,6 +48,7 @@ public class ServletEncuesta extends HttpServlet {
         survey.setDeporte_fav(request.getParameter("deporte"));
         survey.setNivel_estudio(request.getParameter("nivelEstudio"));
         survey.setTemas_fav(request.getParameter("favorito"));
+        survey.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
         
         EncuestaDAO surveyDAO = new EncuestaDAO();
         surveyDAO.addEncuesta(survey);
