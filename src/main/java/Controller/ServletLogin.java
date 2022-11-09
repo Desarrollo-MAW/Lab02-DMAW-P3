@@ -1,8 +1,8 @@
 
 package Controller;
 
-import Model.Usuario;
 import ModelDAO.UsuarioDAO;
+import Model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -52,20 +52,16 @@ public class ServletLogin extends HttpServlet {
         user.setContra(password);
         
         //Agregar a Lista
-        UsuarioDAO userList = new UsuarioDAO();
-        List<Usuario> list = userList.loginUser(user);
+        UsuarioDAO dao = new UsuarioDAO();
+        List<Usuario> list = dao.loginUser(user);
         
         //Variable tipo Usuario para Iterador
         Usuario userIterator = null;
         
         try (PrintWriter out = response.getWriter()) {
             if(list.isEmpty()) {
-                String url = "views/login";
-                String messageContent = 
-                        "<div class='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'>" +
-                        "<strong class='font-bold'>Error!</strong>" +
-                        "<span class='ml-2'>Correo o Contraseña Incorrecta</span>" +
-                        "</div>";
+                String url = "views/login.jsp";
+                String messageContent = "Correo o contraseña incorrecta";
                 response.sendRedirect(url+"?message="+messageContent);
             } else {
                 Iterator<Usuario> i = list.iterator();
