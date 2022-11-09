@@ -8,7 +8,7 @@ import Model.Usuario;
  * @author deuseli
  */
 public interface IUsuarioCRUD {
-    public List listUsuarios();
+    public List loginUser(Usuario user);
     public Usuario getUsuario(int id_usuario);
     public boolean addUsuario(Usuario usuario);
     public boolean updateUsuario(Usuario usuario);
