@@ -61,7 +61,7 @@ public class EncuestaController extends HttpServlet {
                 survey.setDeporte_fav(deporte);
                 survey.setNivel_estudio(nivelEstudio);
                 survey.setTemas_fav(favorito);
-                
+
                 surveyDAO.addEncuesta(survey);
                 
                 access = home;
@@ -69,12 +69,12 @@ public class EncuestaController extends HttpServlet {
         }
         
         response.sendRedirect(access);
-                
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     @Override

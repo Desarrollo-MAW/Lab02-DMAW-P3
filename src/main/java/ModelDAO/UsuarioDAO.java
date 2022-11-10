@@ -91,5 +91,6 @@ public class UsuarioDAO implements IUsuarioCRUD {
     public boolean deleteUsuario(int id_usuario) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
+
