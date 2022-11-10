@@ -106,7 +106,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "ServletEncuesta", urlPatterns = {"/ServletEncuesta"})
+@WebServlet(name = "EncuestaController", urlPatterns = {"/EncuestaController"})
 public class EncuestaController extends HttpServlet {
     
     String home = "views/";
