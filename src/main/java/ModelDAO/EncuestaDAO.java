@@ -53,17 +53,33 @@ public class EncuestaDAO implements IEncuestaCRUD {
 
     @Override
     public boolean addEncuesta(Encuesta encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO encuesta (nombre, sexo, deporte_fav, nivel_estudio, temas_fav, id_usuario, fecha) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, encuesta.getNombre());
+            ps.setString(2, encuesta.getSexo());
+            ps.setString(3, encuesta.getDeporte_fav());
+            ps.setString(4, encuesta.getNivel_estudio());
+            ps.setString(5, encuesta.getTemas_fav());
+            ps.setString(6, String.valueOf(encuesta.getId_usuario()));
+            ps.setString(7, String.valueOf(encuesta.getFecha()));
+            ps.executeUpdate();
+            return true;
+        } catch(Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateEncuesta(Encuesta encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean deleteEncuesta(int id_encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }
