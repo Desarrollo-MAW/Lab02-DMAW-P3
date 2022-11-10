@@ -135,6 +135,58 @@ public class EncuestaDAO implements IEncuestaCRUD {
             conn = cn.getConnection();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Encuesta encuesta = new Encuesta();
+                encuesta.setId_encuesta(rs.getInt("id_encuesta"));
+                encuesta.setNombre(rs.getString("nombre"));
+                encuesta.setSexo(rs.getString("sexo"));
+                encuesta.setDeporte_fav(rs.getString("deporte_fav"));
+                encuesta.setNivel_estudio(rs.getString("nivel_estudio"));
+                encuesta.setTemas_fav(rs.getString("temas_fav"));
+                encuesta.setId_usuario(rs.getInt("id_usuario"));
+                encuesta.setFecha(rs.getDate("fecha"));
+
+                list.add(encuesta);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List getByNombre(String nombre) {
+        ArrayList<Encuesta> list = new ArrayList<>();
+        String sql = "SELECT * FROM encuesta WHERE nombre = ?";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Encuesta encuesta = new Encuesta();
+                encuesta.setId_encuesta(rs.getInt("id_encuesta"));
+                encuesta.setNombre(rs.getString("nombre"));
+                encuesta.setSexo(rs.getString("sexo"));
+                encuesta.setDeporte_fav(rs.getString("deporte_fav"));
+                encuesta.setNivel_estudio(rs.getString("nivel_estudio"));
+                encuesta.setTemas_fav(rs.getString("temas_fav"));
+                encuesta.setId_usuario(rs.getInt("id_usuario"));
+                encuesta.setFecha(rs.getDate("fecha"));
+
+                list.add(encuesta);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List getByFecha(String fecha) {
+        ArrayList<Encuesta> list = new ArrayList<>();
+        String sql = "SELECT * FROM encuesta WHERE fecha = '"+ fecha +"'";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 Encuesta encuesta = new Encuesta();
                 encuesta.setId_encuesta(rs.getInt("id_encuesta"));
@@ -187,7 +239,16 @@ public class EncuestaDAO implements IEncuestaCRUD {
 
     @Override
     public boolean deleteEncuesta(int id_encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE * FROM encuesta WHERE id_encuesta = '" + id_encuesta + "'";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            return true;
+        } catch(Exception e) {
+
+        }
+        return false;
     }
     
 }
