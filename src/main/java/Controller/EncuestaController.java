@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "ServletEncuesta", urlPatterns = {"/ServletEncuesta"})
+@WebServlet(name = "EncuestaController", urlPatterns = {"/EncuestaController"})
 public class EncuestaController extends HttpServlet {
     
     String home = "views/";
@@ -61,26 +61,20 @@ public class EncuestaController extends HttpServlet {
                 survey.setDeporte_fav(deporte);
                 survey.setNivel_estudio(nivelEstudio);
                 survey.setTemas_fav(favorito);
+
+                surveyDAO.addEncuesta(survey);
+                
+                access = home;
                 break;
         }
-                
+        
+        response.sendRedirect(access);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Encuesta survey = new Encuesta();
-        
-        survey.setNombre(request.getParameter("name"));
-        survey.setSexo(request.getParameter("sexo"));
-        survey.setDeporte_fav(request.getParameter("deporte"));
-        survey.setNivel_estudio(request.getParameter("nivelEstudio"));
-        survey.setTemas_fav(request.getParameter("favorito"));
-        survey.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
-        
-        EncuestaDAO surveyDAO = new EncuestaDAO();
-        surveyDAO.addEncuesta(survey);
+
     }
 
     @Override
