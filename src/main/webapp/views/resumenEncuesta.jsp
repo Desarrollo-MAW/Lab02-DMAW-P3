@@ -21,7 +21,7 @@
     int joc = resumenMap.get("Jockey");
     int bei = resumenMap.get("Beisbol");
     int golf = resumenMap.get("Golf");
-    int basico  = resumenMap.get("Basico");
+    int basico = resumenMap.get("Basico");
     int inter = resumenMap.get("Intermedio");
     int supe = resumenMap.get("Superior");
     int tele = resumenMap.get("Tele");
@@ -29,7 +29,7 @@
     int tecno = resumenMap.get("Tecno");
     int mus = resumenMap.get("Musica");
     int depo = resumenMap.get("Deporte");
-        //tipoAutoList.add(auto.getTipo());
+    //tipoAutoList.add(auto.getTipo());
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,29 +51,35 @@
         }
     %>
     <body>
-        <div class="flex flex-col">
-            <div class="flex justify-evenly mt-10 items-center">
-                <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
-                    <canvas id="sexo"></canvas>
-                    <span class="mt-3">SEXO</span>
-                </div>
-                <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
-                    <canvas id="deporte_fav"></canvas>
-                    <span class="mt-3">DEPORTE FAVORITO</span>
-                </div>
-            </div>
-            <div class="flex justify-evenly mt-10 items-center">
-                <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
-                    <canvas id="nivel_estudio"></canvas>
-                    <span class="mt-3">NIVEL DE ESTUDIO</span>
-                </div>
-                <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
-                    <canvas id="temas_fav"></canvas>
-                    <span class="mt-3">TEMAS FAVORITOS</span>
+        <div class="flex justify-center items-center">
+            <div class="w-[70%]">
+                <div class="w-full p-10">
+                    <div class="flex flex-col">
+                        <div class="flex justify-evenly mt-10 items-center">
+                            <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
+                                <canvas id="sexo"></canvas>
+                                <span class="mt-3 text-2xl font-bold">SEXO</span>
+                            </div>
+                            <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
+                                <canvas id="deporte_fav"></canvas>
+                                <span class="mt-3 text-2xl font-bold">DEPORTE FAVORITO</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-evenly mt-10 items-center">
+                            <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
+                                <canvas id="nivel_estudio"></canvas>
+                                <span class="mt-3 text-2xl font-bold">NIVEL DE ESTUDIO</span>
+                            </div>
+                            <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
+                                <canvas id="temas_fav"></canvas>
+                                <span class="mt-3 text-2xl font-bold">TEMAS FAVORITOS</span>
 
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>    
+        </div>    
     </body>
     <script>
         const sexoData = {
@@ -153,7 +159,7 @@
                 'Deportes'
             ],
             datasets: [{
-                    data: [<% out.print(tele); %>, <% out.print(cocina); %>, <% out.print(tecno); %>, <% out.print(mus); %>, <% out.print(depo); %>],
+                    data: [<% out.print(tele); %>, <% out.print(cocina); %>, <% out.print(tecno); %>, <% out.print(mus); %>, <% out.print(depo);%>],
                     backgroundColor: [
                         'rgb(54, 162, 235)',
                         'rgb(44, 99, 22)',
