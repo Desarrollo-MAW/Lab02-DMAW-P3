@@ -49,12 +49,12 @@ public class EncuestaController extends HttpServlet {
         String action = request.getParameter("action");
         switch (action.toLowerCase()) {
             case "encuestas":
-                if (request.getParameter("name") != null) {
-                    if (request.getParameter("name").isEmpty()) {
+                if (request.getParameter("nombre") != null) {
+                    if (request.getParameter("nombre").isEmpty()) {
                         access = encuestas + "?list=every";
                     } else {
 //                        surveyDAO.getByNombre(request.getParameter("name"));
-                        access = encuestas + "?list="+request.getParameter("name");
+                        access = encuestas + "?list="+request.getParameter("nombre");
                     }
                 } else {
                     access = encuestas + "?list=every";
@@ -90,12 +90,12 @@ public class EncuestaController extends HttpServlet {
             case "buscar":
                 nombre = request.getParameter("nombre");
                 surveyDAO.getByNombre(nombre);
-                access = encuestas+"?list="+nombre;
+                access = encuestas+"?list="+nombre+"&from=search";
                 break;
             case "filtrar":
                 fecha = request.getParameter("date");
                 surveyDAO.getByFecha(fecha);
-                access = encuestas+"?list="+fecha;
+                access = encuestas+"?list="+fecha+"&from=filter";
                 break;
         }
         

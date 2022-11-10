@@ -57,14 +57,32 @@
                             <tbody>
                                 <%
                                     EncuestaDAO survey = new EncuestaDAO();
-                                    String parametro = request.getParameter("list");
+                                    String paramLista = request.getParameter("list");
+                                    String paramFrom = request.getParameter("from");
                                     List<Encuesta> list = new ArrayList<>();
-                                    if (parametro != null) {
-                                        if (parametro.equals("every")) {
-                                            list = survey.listEncuestas();
-                                        } else {
-                                            list = survey.getByNombre(parametro);
+                                    if (paramLista != null && paramFrom != null) {
+                                        switch (paramFrom) {
+                                            case "filter":
+                                                if (paramLista.equals("every")) {
+                                                    list = survey.listEncuestas();
+                                                } else if (paramLista.isEmpty()) {
+                                                    list = survey.listEncuestas();
+                                                } else {
+                                                    list = survey.getByFecha(paramLista);
+                                                }
+                                                break;
+                                            case "search":
+                                                if (paramLista.equals("every")) {
+                                                    list = survey.listEncuestas();
+                                                } else {
+                                                    list = survey.getByNombre(paramLista);
+                                                }
+                                                break;
+                                            default:
+                                                list = survey.listEncuestas();
                                         }
+                                    } else if (paramLista != null) {
+                                        list = survey.listEncuestas();
                                     }
                                     
                                     for (int i = 0; i < list.size(); i++) {
