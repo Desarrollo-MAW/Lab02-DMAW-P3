@@ -21,7 +21,7 @@
                 <ul class="flex items-start justify-between items-center text-base text-white pt-4 md:pt-0">
                     <div class="flex flex-row">
                         <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="resumenEncuesta.jsp">Resumen de Encuestas</a></li>
-                        <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="encuestas.jsp">Encuestas</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="../EncuestaController?action=encuestas">Encuestas</a></li>
                     </div>
                     <li>
                         <div class="px-2 py-1 rounded-md bg-red-400"><a class="no-underline font-bold" href="http://localhost:8080/Lab02-DMAW-P3/ServletCerrarSesion">Cerrar Sesión</a></div>
