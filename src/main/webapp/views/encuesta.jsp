@@ -11,8 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Encuesta</title>
         <script src="https://cdn.tailwindcss.com"></script>
-
     </head>
+    <%
+            if(session.getAttribute("admin").equals("true")) {
+            %>
+            <jsp:include page="nav/menuAdmin.jsp" flush="true" />
+            <%
+            } else if(session.getAttribute("admin").equals("false")) {
+                %>
+                <jsp:include page="nav/menuUsuario.jsp" flush="true" />
+                <%
+            }
+        %>
     <body>
         <div class="flex justify-center items-center">
             <div class="h-auto w-[40%] flex justify-start items-start bg-transparent border rounded-3xl mt-10">
@@ -67,7 +77,7 @@
                             <label><input class="mr-2 mb-10" type="radio" name="favorito" value="musica">Música</label>
                             <label><input class="mr-2 mb-10" type="radio" name="favorito" value="derpotes">Deportes</label>
                         </div>
-                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="survey" value="Enviar Datos">
+                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="action" value="Enviar">
                     </form>
                     <!--Fin del Bloque del Formulario-->
                 </div>
