@@ -72,6 +72,12 @@ public class EncuestaController extends HttpServlet {
                 surveyDAO.deleteEncuesta(id_encuesta);
                 access = encuestas;
                 break;
+                
+            case "buscar":
+                nombre = request.getParameter("nombre");
+                surveyDAO.getByNombre(nombre);
+                access = encuestas;
+                break;
         }
         
         response.sendRedirect(access);
