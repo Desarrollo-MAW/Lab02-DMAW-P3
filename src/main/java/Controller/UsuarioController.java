@@ -29,8 +29,7 @@ public class UsuarioController extends HttpServlet {
     String deleteUsuario = "";
     Usuario usuario = new Usuario();
     UsuarioDAO dao = new UsuarioDAO();
-     
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,7 +38,7 @@ public class UsuarioController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UsuarioController</title>");            
+            out.println("<title>Servlet UsuarioController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UsuarioController at " + request.getContextPath() + "</h1>");
@@ -57,19 +56,19 @@ public class UsuarioController extends HttpServlet {
         String action = request.getParameter("action");
         switch (action.toLowerCase()) {
             case "login":
-                
+
                 break;
             case "registrarse":
                 nombre = request.getParameter("nombre");
                 apellido = request.getParameter("apellido");
                 correo = request.getParameter("correo");
                 contra = request.getParameter("contra");
-                
+
                 usuario.setNombre(nombre);
                 usuario.setApellido(apellido);
                 usuario.setCorreo(correo);
                 usuario.setContra(contra);
-                
+
                 dao.addUsuario(usuario);
                 access = login;
                 break;
@@ -84,24 +83,30 @@ public class UsuarioController extends HttpServlet {
                 apellido = request.getParameter("apellido");
                 correo = request.getParameter("correo");
                 contra = request.getParameter("contra");
-                
+
                 usuario.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
                 usuario.setNombre(nombre);
                 usuario.setApellido(apellido);
                 usuario.setCorreo(correo);
                 usuario.setContra(contra);
-                
+
                 dao.updateUsuario(usuario);
+
+                session.setAttribute("correo", usuario.getCorreo());
+                session.setAttribute("contra", usuario.getContra());
+                session.setAttribute("nombre", usuario.getNombre());
+                session.setAttribute("apellido", usuario.getApellido());
+
                 access = home;
                 break;
             case "delete":
-                
+
                 break;
             default:
                 throw new AssertionError();
         }
         response.sendRedirect(access);
-        
+
     }
 
     @Override
@@ -114,4 +119,5 @@ public class UsuarioController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
