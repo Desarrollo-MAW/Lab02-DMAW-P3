@@ -12,16 +12,16 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <%
-            if(session.getAttribute("admin").equals("true")) {
-            %>
-            <jsp:include page="nav/menuAdmin.jsp" flush="true" />
-            <%
-            } else if(session.getAttribute("admin").equals("false")) {
-                %>
-                <jsp:include page="nav/menuUsuario.jsp" flush="true" />
-                <%
-            }
-        %>
+        if (session.getAttribute("admin").equals("true")) {
+    %>
+    <jsp:include page="nav/menuAdmin.jsp" flush="true" />
+    <%
+    } else if (session.getAttribute("admin").equals("false")) {
+    %>
+    <jsp:include page="nav/menuUsuario.jsp" flush="true" />
+    <%
+        }
+    %>
     <body>
         <div class="flex justify-center items-center">
             <div class="h-auto w-[40%] flex justify-start items-start bg-transparent border rounded-3xl mt-10">
@@ -32,7 +32,7 @@
                         <div class="font-bold text-lg mr-3">
                             Nombre
                         </div>
-                        <input class="w-full rounded-md bg-slate-100 focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="name" value="<% out.print(session.getAttribute("nombre")); %>" readonly="true">
+                        <input class="w-full rounded-md bg-slate-100 focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="name" value="<% out.print(session.getAttribute("nombre"));%>" readonly="true">
                         <!-- Sexo -->
                         <div class="font-bold text-lg mr-3">
                             Sexo
@@ -47,9 +47,9 @@
                         </div>
                         <div>
                             <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Fútbol">Fútbol</label>
-                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Basketball">Basketball</label>
+                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Básquetbol">Básquetbol</label>
                             <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Jockey">Jockey</label>
-                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Beisbol">Beisbol</label>
+                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Béisbol">Béisbol</label>
                             <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Golf">Golf</label>
                         </div>
 

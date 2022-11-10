@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  *
@@ -20,6 +22,110 @@ public class EncuestaDAO implements IEncuestaCRUD {
     PreparedStatement ps;
     ResultSet rs;
     Encuesta enc = new Encuesta();
+    Map<String, Integer> map;
+    
+    public Map<String, Integer> getResumenEncuestas() {
+        ArrayList<Encuesta> list = new ArrayList<>();
+        map = new HashMap<>();
+        String sql = "SELECT sexo, deporte_fav, nivel_estudio, temas_fav FROM encuesta";
+        int m = 0, f = 0, fut = 0, bas = 0, joc = 0, bei = 0, golf = 0, basico = 0, inter = 0, supe = 0, tele = 0, cocina = 0, tec = 0, mus = 0, depo = 0;
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Encuesta encuesta = new Encuesta();
+                encuesta.setSexo(rs.getString("sexo"));
+                encuesta.setDeporte_fav(rs.getString("deporte_fav"));
+                encuesta.setNivel_estudio(rs.getString("nivel_estudio"));
+                encuesta.setTemas_fav(rs.getString("temas_fav"));
+                list.add(encuesta);
+                
+                switch (encuesta.getSexo()) {
+                    case "Masculino":
+                        m += 1;
+                        break;
+                    case "Femenino":
+                        f += 1;
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                
+                switch (encuesta.getDeporte_fav()) {
+                    case "Fútbol":
+                        fut += 1;
+                        break;
+                    case "Básquetbol":
+                        bas += 1;
+                        break;
+                    case "Jockey":
+                        joc += 1;
+                    case "Béisbol":
+                        bei += 1;
+                        break;
+                    case "Golf":
+                        golf += 1;
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                
+                switch (encuesta.getNivel_estudio()) {
+                    case "Básico":
+                        basico += 1;
+                        break;
+                    case "Intermedio":
+                        inter += 1;
+                        break;
+                    case "Superior":
+                        supe += 1;
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                
+                switch (encuesta.getTemas_fav()) {
+                    case "Televisión":
+                        tele += 1;
+                        break;
+                    case "Cocina":
+                        cocina += 1;
+                        break;
+                    case "Tecnología":
+                        tec += 1;
+                        break;
+                    case "Música":
+                        mus += 1;
+                        break;
+                    case "Deportes":
+                        depo += 1;
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }
+            
+        map.put("Masculino", m);
+        map.put("Femenino", f);
+        map.put("Futbol", fut);
+        map.put("Basquetbol", bas);
+        map.put("Jockey", joc);
+        map.put("Beisbol", bei);
+        map.put("Golf", golf);
+        map.put("Basico", basico);
+        map.put("Intermedio", inter);
+        map.put("Superior", supe);
+        map.put("Tele", tele);
+        map.put("Cocina", cocina);
+        map.put("Tecno", tec);
+        map.put("Musica", mus);
+        map.put("Deporte", depo);
+        
+        } catch (Exception e) {
+        }
+        return map;
+    }
 
     @Override
     public List listEncuestas() {

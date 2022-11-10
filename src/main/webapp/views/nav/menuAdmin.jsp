@@ -20,7 +20,7 @@
             <nav>
                 <ul class="flex items-start justify-between items-center text-base text-white pt-4 md:pt-0">
                     <div class="flex flex-row">
-                        <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="#">Resumen de Encuestas</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="resumenEncuesta.jsp">Resumen de Encuestas</a></li>
                         <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="#">Encuestas</a></li>
                     </div>
                     <li>
