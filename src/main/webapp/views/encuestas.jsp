@@ -7,6 +7,7 @@
 <%@page import="ModelDAO.EncuestaDAO"%>
 <%@page import="Model.Encuesta"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,12 +29,12 @@
     %>
     <body>
         <div class="flex flex-col justify-center items-center">
-            <form action="../EncuestaCOntroller">
+            <form action="../EncuestaController">
                 <div class="h-auto w-auto flex flex-col border bg-transparent rounded-3xl p-10 mt-10 mb-10">
                     <!-- Filtrar por Fecha -->
                     <div class="flex justify-start items-center mb-10">
                         <input class="w-40 rounded-md bg-slate-100 focus:outline-none py-1 text-center mr-3" type="date" name="date">
-                        <button type="submit" name="date" class="bg-blue-800 text-white font-bold px-5 py-1 rounded-xl">Filtrar</button>
+                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="action" value="Filtrar">
                     </div>
                     <!-- Busqueda por Nombre -->
                     <div class="flex justify-start items-center mb-5">
@@ -56,7 +57,16 @@
                             <tbody>
                                 <%
                                     EncuestaDAO survey = new EncuestaDAO();
-                                    List<Encuesta> list = survey.listEncuestas();
+                                    String parametro = request.getParameter("list");
+                                    List<Encuesta> list = new ArrayList<>();
+                                    if (parametro != null) {
+                                        if (parametro.equals("every")) {
+                                            list = survey.listEncuestas();
+                                        } else {
+                                            list = survey.getByNombre(parametro);
+                                        }
+                                    }
+                                    
                                     for (int i = 0; i < list.size(); i++) {
                                         out.print(
                                                 "<tr><td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'><input type=checkbox name='eliminar' value='" + list.get(i).getId_usuario() + "' title='" + list.get(i).getId_usuario() + "'></td>"

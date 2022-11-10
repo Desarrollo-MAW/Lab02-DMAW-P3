@@ -43,11 +43,25 @@ public class EncuestaController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Date now = new Date();
-        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(now);
+        String fecha = "";
         String nombre, sexo, deporte, nivelEstudio, favorito;
         String access = "";
         String action = request.getParameter("action");
-        switch(action.toLowerCase()) {
+        switch (action.toLowerCase()) {
+            case "encuestas":
+                if (request.getParameter("name") != null) {
+                    if (request.getParameter("name").isEmpty()) {
+                        access = encuestas + "?list=every";
+                    } else {
+//                        surveyDAO.getByNombre(request.getParameter("name"));
+                        access = encuestas + "?list="+request.getParameter("name");
+                    }
+                } else {
+                    access = encuestas + "?list=every";
+                }
+
+                break;
+            
             case "enviar":
                 nombre = request.getParameter("name");
                 sexo = request.getParameter("sexo");
@@ -76,7 +90,12 @@ public class EncuestaController extends HttpServlet {
             case "buscar":
                 nombre = request.getParameter("nombre");
                 surveyDAO.getByNombre(nombre);
-                access = encuestas;
+                access = encuestas+"?list="+nombre;
+                break;
+            case "filtrar":
+                fecha = request.getParameter("date");
+                surveyDAO.getByFecha(fecha);
+                access = encuestas+"?list="+fecha;
                 break;
         }
         

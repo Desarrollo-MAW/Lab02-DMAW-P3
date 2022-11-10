@@ -156,11 +156,12 @@ public class EncuestaDAO implements IEncuestaCRUD {
     
     public List getByNombre(String nombre) {
         ArrayList<Encuesta> list = new ArrayList<>();
-        String sql = "SELECT * FROM encuesta WHERE nombre = ?";
+//        String sql = "SELECT * FROM encuesta WHERE nombre = ?";
+        String sql = "SELECT * FROM encuesta WHERE nombre LIKE '%"+nombre+"%'";
         try {
             conn = cn.getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, nombre);
+//            ps.setString(1, nombre);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Encuesta encuesta = new Encuesta();
@@ -182,7 +183,7 @@ public class EncuestaDAO implements IEncuestaCRUD {
     
     public List getByFecha(String fecha) {
         ArrayList<Encuesta> list = new ArrayList<>();
-        String sql = "SELECT * FROM encuesta WHERE fecha = '"+ fecha +"'";
+        String sql = "SELECT * FROM encuesta WHERE fecha = '"+fecha+"'";
         try {
             conn = cn.getConnection();
             ps = conn.prepareStatement(sql);
