@@ -187,7 +187,16 @@ public class EncuestaDAO implements IEncuestaCRUD {
 
     @Override
     public boolean deleteEncuesta(int id_encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE * FROM encuesta WHERE id_encuesta = '" + id_encuesta + "'";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            return true;
+        } catch(Exception e) {
+
+        }
+        return false;
     }
     
 }

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 public class EncuestaController extends HttpServlet {
     
     String home = "views/";
+    String encuestas = "views/encuestas.jsp";
     Encuesta survey = new Encuesta();
     EncuestaDAO surveyDAO = new EncuestaDAO();
     
@@ -65,6 +66,11 @@ public class EncuestaController extends HttpServlet {
                 surveyDAO.addEncuesta(survey);
                 
                 access = home;
+                break;
+            case "eliminar":
+                int id_encuesta = Integer.parseInt(request.getParameter("id_encuesta"));
+                surveyDAO.deleteEncuesta(id_encuesta);
+                access = encuestas;
                 break;
         }
         
