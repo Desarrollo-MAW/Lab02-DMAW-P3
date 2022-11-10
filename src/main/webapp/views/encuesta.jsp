@@ -28,12 +28,12 @@
             <div class="h-auto w-[40%] flex justify-start items-start bg-transparent border rounded-3xl mt-10">
                 <div class="w-full p-10">
                     <!--Inicio del Bloque del Formulario-->
-                    <form method="POST" action="../../ServletEncuesta">
+                    <form method="" action="../EncuestaController">
                         <!-- Nombre -->
                         <div class="font-bold text-lg mr-3">
                             Nombre
                         </div>
-                        <input class="w-full rounded-md bg-slate-100 focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="name">
+                        <input class="w-full rounded-md bg-slate-100 focus:outline-none px-3 py-2 mt-2 mb-3" type="text" name="name" value="<% out.print(session.getAttribute("nombre")); %>" readonly="true">
                         <!-- Sexo -->
                         <div class="font-bold text-lg mr-3">
                             Sexo

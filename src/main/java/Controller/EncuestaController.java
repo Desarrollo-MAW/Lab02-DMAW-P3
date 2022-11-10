@@ -134,8 +134,6 @@ public class EncuestaController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Date now = new Date();
-        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(now);
         String nombre, sexo, deporte, nivelEstudio, favorito;
         String access = "";
         String action = request.getParameter("action");
@@ -148,32 +146,25 @@ public class EncuestaController extends HttpServlet {
                 favorito = request.getParameter("favorito");
                 
                 survey.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
-                survey.setFecha(now);
+                survey.setFecha(new Date());
                 survey.setNombre(nombre);
                 survey.setSexo(sexo);
                 survey.setDeporte_fav(deporte);
                 survey.setNivel_estudio(nivelEstudio);
                 survey.setTemas_fav(favorito);
+                
+                surveyDAO.addEncuesta(survey);
+                
+                access = home;
                 break;
         }
+        response.sendRedirect(access);
                 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Encuesta survey = new Encuesta();
-        
-        survey.setNombre(request.getParameter("name"));
-        survey.setSexo(request.getParameter("sexo"));
-        survey.setDeporte_fav(request.getParameter("deporte"));
-        survey.setNivel_estudio(request.getParameter("nivelEstudio"));
-        survey.setTemas_fav(request.getParameter("favorito"));
-        survey.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
-        
-        EncuestaDAO surveyDAO = new EncuestaDAO();
-        surveyDAO.addEncuesta(survey);
     }
 
     @Override
