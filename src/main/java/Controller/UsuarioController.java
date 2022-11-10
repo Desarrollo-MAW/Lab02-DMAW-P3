@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,11 +23,13 @@ public class UsuarioController extends HttpServlet {
 
     String usuarios = "";
     String login = "views/login.jsp";
+    String home = "views/";
     String registerUsuario = "views/register.jsp";
-    String updateUsuario = "";
+    String updateUsuario = "views/editUser.jsp";
     String deleteUsuario = "";
     Usuario usuario = new Usuario();
     UsuarioDAO dao = new UsuarioDAO();
+     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,6 +51,8 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String nombre, apellido, correo, contra;
         String access = "";
         String action = request.getParameter("action");
         switch (action.toLowerCase()) {
@@ -55,10 +60,10 @@ public class UsuarioController extends HttpServlet {
                 
                 break;
             case "registrarse":
-                String nombre = request.getParameter("nombre");
-                String apellido = request.getParameter("apellido");
-                String correo = request.getParameter("correo");
-                String contra = request.getParameter("contra");
+                nombre = request.getParameter("nombre");
+                apellido = request.getParameter("apellido");
+                correo = request.getParameter("correo");
+                contra = request.getParameter("contra");
                 
                 usuario.setNombre(nombre);
                 usuario.setApellido(apellido);
@@ -72,7 +77,22 @@ public class UsuarioController extends HttpServlet {
                 access = registerUsuario;
                 break;
             case "update":
+                access = updateUsuario;
+                break;
+            case "actualizar":
+                nombre = request.getParameter("nombre");
+                apellido = request.getParameter("apellido");
+                correo = request.getParameter("correo");
+                contra = request.getParameter("contra");
                 
+                usuario.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
+                usuario.setNombre(nombre);
+                usuario.setApellido(apellido);
+                usuario.setCorreo(correo);
+                usuario.setContra(contra);
+                
+                dao.updateUsuario(usuario);
+                access = home;
                 break;
             case "delete":
                 

@@ -15,11 +15,11 @@
         <%
             if(session.getAttribute("admin").equals("true")) {
             %>
-            <jsp:include page="nav/menuAdmin.html" flush="true" />
+            <jsp:include page="nav/menuAdmin.jsp" flush="true" />
             <%
             } else if(session.getAttribute("admin").equals("false")) {
                 %>
-                <jsp:include page="nav/menuUsuario.html" flush="true" />
+                <jsp:include page="nav/menuUsuario.jsp" flush="true" />
                 <%
             }
         %>

@@ -5,6 +5,8 @@ import Model.Encuesta;
 import ModelDAO.EncuestaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ServletEncuesta", urlPatterns = {"/ServletEncuesta"})
-public class ServletEncuesta extends HttpServlet {
+public class EncuestaController extends HttpServlet {
+    
+    String home = "views/";
+    Encuesta survey = new Encuesta();
+    EncuestaDAO surveyDAO = new EncuestaDAO();
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +41,30 @@ public class ServletEncuesta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Date now = new Date();
+        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(now);
+        String nombre, sexo, deporte, nivelEstudio, favorito;
+        String access = "";
+        String action = request.getParameter("action");
+        switch(action.toLowerCase()) {
+            case "enviar":
+                nombre = request.getParameter("name");
+                sexo = request.getParameter("sexo");
+                deporte = request.getParameter("deporte");
+                nivelEstudio = request.getParameter("nivelEstudio");
+                favorito = request.getParameter("favorito");
+                
+                survey.setId_usuario(Integer.parseInt(session.getAttribute("id_usuario").toString()));
+                survey.setFecha(now);
+                survey.setNombre(nombre);
+                survey.setSexo(sexo);
+                survey.setDeporte_fav(deporte);
+                survey.setNivel_estudio(nivelEstudio);
+                survey.setTemas_fav(favorito);
+                break;
+        }
+                
     }
 
     @Override
