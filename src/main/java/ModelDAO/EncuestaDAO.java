@@ -207,8 +207,28 @@ public class EncuestaDAO implements IEncuestaCRUD {
     }
 
     @Override
-    public Encuesta getEncuesta(int id_encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List getEncuesta(int id_encuesta) {
+        ArrayList<Encuesta> list = new ArrayList<>();
+        String sql = "SELECT * FROM encuesta WHERE id_usuario ='"+id_encuesta+"'";
+        Encuesta survey = new Encuesta();
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Encuesta encuesta = new Encuesta();
+                encuesta.setNombre(rs.getString("nombre"));
+                encuesta.setSexo(rs.getString("sexo"));
+                encuesta.setDeporte_fav(rs.getString("deporte_fav"));
+                encuesta.setNivel_estudio(rs.getString("nivel_estudio"));
+                encuesta.setTemas_fav(rs.getString("temas_fav"));
+                encuesta.setFecha(rs.getDate("fecha"));
+                list.add(encuesta);
+            }
+        }catch(Exception e) {
+            
+        }
+        return list;
     }
 
     @Override
@@ -231,6 +251,29 @@ public class EncuestaDAO implements IEncuestaCRUD {
 
         }
         return false;
+    }
+    
+    public String checkEncuesta(int id_usuario) {
+        String response = "";
+        String check = "false";
+        String sql = "SELECT id_usuario FROM encuesta WHERE id_usuario = '" + id_usuario + "'";
+        try {
+            conn = cn.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                response += rs.getString("id_usuario");
+                if (response.isEmpty()) {
+                    check = "false";
+                } else {
+                    check = "true";
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+        return check;
     }
 
     @Override
