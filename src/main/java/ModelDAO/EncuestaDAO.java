@@ -53,15 +53,15 @@ public class EncuestaDAO implements IEncuestaCRUD {
                 }
                 
                 switch (encuesta.getDeporte_fav()) {
-                    case "Fútbol":
+                    case "Futbol":
                         fut += 1;
                         break;
-                    case "Básquetbol":
+                    case "Basquetbol":
                         bas += 1;
                         break;
                     case "Jockey":
                         joc += 1;
-                    case "Béisbol":
+                    case "Beisbol":
                         bei += 1;
                         break;
                     case "Golf":
@@ -72,7 +72,7 @@ public class EncuestaDAO implements IEncuestaCRUD {
                 }
                 
                 switch (encuesta.getNivel_estudio()) {
-                    case "Básico":
+                    case "Basico":
                         basico += 1;
                         break;
                     case "Intermedio":
@@ -86,16 +86,16 @@ public class EncuestaDAO implements IEncuestaCRUD {
                 }
                 
                 switch (encuesta.getTemas_fav()) {
-                    case "Televisión":
+                    case "Television":
                         tele += 1;
                         break;
                     case "Cocina":
                         cocina += 1;
                         break;
-                    case "Tecnología":
+                    case "Tecnologia":
                         tec += 1;
                         break;
-                    case "Música":
+                    case "Musica":
                         mus += 1;
                         break;
                     case "Deportes":

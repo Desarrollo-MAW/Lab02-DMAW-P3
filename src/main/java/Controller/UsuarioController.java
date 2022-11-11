@@ -61,8 +61,8 @@ public class UsuarioController extends HttpServlet {
             case "registrarse":
                 nombre = request.getParameter("nombre").toUpperCase();
                 apellido = request.getParameter("apellido").toUpperCase();
-                correo = request.getParameter("correo").toUpperCase();
-                contra = request.getParameter("contra").toUpperCase();
+                correo = request.getParameter("correo");
+                contra = request.getParameter("contra");
 
                 usuario.setNombre(nombre);
                 usuario.setApellido(apellido);
@@ -79,8 +79,8 @@ public class UsuarioController extends HttpServlet {
                 access = updateUsuario;
                 break;
             case "actualizar":
-                nombre = request.getParameter("nombre");
-                apellido = request.getParameter("apellido");
+                nombre = request.getParameter("nombre").toUpperCase();
+                apellido = request.getParameter("apellido").toUpperCase();
                 correo = request.getParameter("correo");
                 contra = request.getParameter("contra");
 

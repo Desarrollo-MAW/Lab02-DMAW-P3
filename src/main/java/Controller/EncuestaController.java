@@ -88,7 +88,7 @@ public class EncuestaController extends HttpServlet {
                 break;
                 
             case "buscar":
-                nombre = request.getParameter("nombre");
+                nombre = request.getParameter("nombre").toUpperCase();
                 surveyDAO.getByNombre(nombre);
                 access = encuestas+"?list="+nombre+"&from=search";
                 break;
