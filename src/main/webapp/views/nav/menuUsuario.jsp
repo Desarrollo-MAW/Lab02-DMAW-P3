@@ -4,7 +4,9 @@
     Author     : kjlme
 --%>
 
+<%@page import="ModelDAO.EncuestaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%!EncuestaDAO survey = new EncuestaDAO();%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,11 +20,7 @@
         <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
             <div class="w-full md:order-1" id="menu">
                 <nav>
-                    <ul class="flex items-start justify-between text-base text-white pt-4 md:pt-0">
-                        <div class="flex flex-row">
-                            <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="encuesta.jsp">Realizar Encuesta</a></li>
-                            <li><a class="inline-block no-underline hover:text-black font-semibold text-lg py-2 px-4 lg:-ml-2" href="#">Mi Encuesta</a></li>
-                        </div>
+                    <ul class="flex items-end justify-end text-base text-white pt-4 md:pt-0">
                         <div class="flex justify-center items-center">
                             <li>
                                 <div class="flex flex-row justify-center items-center">
@@ -30,7 +28,7 @@
                                         <i class="bi bi-person-circle"></i>
                                     </div>
                                     <div class="flex flex-col justify-center items-center mr-10">
-                                        <span class="font-bold text-xl"><% out.print(session.getAttribute("nombre")+ " " + session.getAttribute("apellido")); %></span>
+                                        <span class="font-bold text-xl"><% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%></span>
                                         <a class="no-underline italic" href="../UsuarioController?action=update">Editar Perfil</a>
                                     </div>
                                     <div class="px-2 py-1 rounded-md bg-red-400"><a class="no-underline font-bold" href="http://localhost:8080/Lab02-DMAW-P3/ServletCerrarSesion">Cerrar Sesión</a></div>
@@ -43,4 +41,7 @@
 
         </div>
     </nav>
+    <body>
+        
+    </body>
 </html>

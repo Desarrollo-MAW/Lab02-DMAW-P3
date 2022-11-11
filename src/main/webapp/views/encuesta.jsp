@@ -11,17 +11,6 @@
         <title>Encuesta</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <%
-        if (session.getAttribute("admin").equals("true")) {
-    %>
-    <jsp:include page="nav/menuAdmin.jsp" flush="true" />
-    <%
-    } else if (session.getAttribute("admin").equals("false")) {
-    %>
-    <jsp:include page="nav/menuUsuario.jsp" flush="true" />
-    <%
-        }
-    %>
     <body>
         <div class="flex justify-center items-center">
             <div class="h-auto w-[40%] flex justify-start items-start bg-transparent border rounded-3xl mt-10">

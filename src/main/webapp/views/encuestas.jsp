@@ -11,22 +11,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Encuestas</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <%
-        if (session.getAttribute("admin").equals("true")) {
-    %>
-    <jsp:include page="nav/menuAdmin.jsp" flush="true" />
-    <%
-    } else if (session.getAttribute("admin").equals("false")) {
-    %>
-    <jsp:include page="nav/menuUsuario.jsp" flush="true" />
-    <%
-        }
-    %>
     <body>
         <div class="flex flex-col justify-center items-center">
             <form action="../EncuestaController">
