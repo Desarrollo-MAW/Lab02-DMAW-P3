@@ -54,6 +54,7 @@
         <div class="flex justify-center items-center">
             <div class="w-[70%]">
                 <div class="w-full p-10">
+                    <h1>TOTAL DE ECUESTAS REGISTRADAS: <% out.print(m+f); %></h1>
                     <div class="flex flex-col">
                         <div class="flex justify-evenly mt-10 items-center">
                             <div class="flex flex-col items-center border-2 shadow-xl rounded-3xl p-5" style="width: 400px;">
