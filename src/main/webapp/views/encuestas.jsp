@@ -11,6 +11,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+        if (session.getAttribute("admin").equals("true")) {
+    %>
+    <jsp:include page="nav/menuAdmin.jsp" flush="true" />
+    <%
+    } else if (session.getAttribute("admin").equals("false")) {
+    %>
+    <jsp:include page="nav/menuUsuario.jsp" flush="true" />
+    <%
+        }
+    %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="utf-8">
     <body>
         <div class="flex flex-col justify-center items-center">
             <form action="../EncuestaController">
@@ -18,19 +31,19 @@
                     <!-- Filtrar por Fecha -->
                     <div class="flex justify-start items-center mb-10">
                         <input class="w-40 rounded-md bg-slate-100 focus:outline-none py-1 text-center mr-3" type="date" name="date">
-                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="action" value="Filtrar">
+                        <input class="px-3 py-1 bg-blue-800 font-bold text-white rounded-md" type="submit" name="action" value="Filtrar">
                     </div>
                     <!-- Busqueda por Nombre -->
                     <div class="flex justify-start items-center mb-5">
                         <input class="w-full rounded-md bg-slate-100 focus:outline-none px-3 py-2 mr-3" type="text" name="nombre">
-                        <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="action" value="Buscar">
+                        <input class="px-5 py-2 bg-gray-800 font-bold text-white rounded-md" type="submit" name="action" value="Buscar">
                     </div>
                     <!-- Tabla -->
                     <div class="flex flex-col justify-center items-center">
                         <table class="table">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
-                                    <th class="px-3 py-2"></th>
+                                    <!--<th class="px-3 py-2"></th>-->
                                     <th class="px-3 py-2">NOMBRE</th>
                                     <th class="px-3 py-2">SEXO</th>
                                     <th class="px-3 py-2">DEPORTE</th>
@@ -71,8 +84,7 @@
                                     
                                     for (int i = 0; i < list.size(); i++) {
                                         out.print(
-                                                "<tr><td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'><input type=checkbox name='eliminar' value='" + list.get(i).getId_usuario() + "' title='" + list.get(i).getId_usuario() + "'></td>"
-                                                + "<td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'>" + list.get(i).getNombre() + "</td>"
+                                                "<tr><td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'>" + list.get(i).getNombre() + "</td>"
                                                 + "<td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'>" + list.get(i).getSexo() + "</td>"
                                                 + "<td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'>" + list.get(i).getDeporte_fav() + "</td>"
                                                 + "<td class='px-3 py-2 border-b border-gray-300 shadow-md text-center'>" + list.get(i).getTemas_fav() + "</td>"
@@ -82,9 +94,9 @@
                                 %>
                             </tbody>
                         </table>
-                        <div class="flex justify-end items-center">
+<!--                        <div class="flex justify-end items-center">
                             <button type="submit" name="delete" class="bg-red-400 text-white font-bold px-3 py-2 rounded-xl mt-5">Eliminar</button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </form>

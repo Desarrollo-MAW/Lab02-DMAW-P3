@@ -35,10 +35,10 @@
                             Deporte Favorito
                         </div>
                         <div>
-                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Fútbol">Fútbol</label>
-                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Básquetbol">Básquetbol</label>
+                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Futbol">Fútbol</label>
+                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Basquetbol">Básquetbol</label>
                             <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Jockey">Jockey</label>
-                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Béisbol">Béisbol</label>
+                            <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Beisbol">Béisbol</label>
                             <label><input class="mr-2 mb-3" type="radio" name="deporte" value="Golf">Golf</label>
                         </div>
 
@@ -49,7 +49,7 @@
                         <div>
                             <select name="nivelEstudio" id="nivelEstudio" class="w-full bg-slate-100 text-gray-900 text-sm rounded-lg focus:outline-none p-3 mb-3">
                                 <option selected >Seleccione un nivel de Estudio</option>
-                                <option>Básico</option>
+                                <option>Basico</option>
                                 <option>Intermedio</option>
                                 <option>Superior</option>
                             </select>
@@ -59,10 +59,10 @@
                             Temas Favoritos
                         </div>
                         <div>
-                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Televisión">Televisión</label>
+                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Television">Televisión</label>
                             <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Cocina">Cocina</label>
-                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Tecnología">Tecnología</label>
-                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Música">Música</label>
+                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Tecnologia">Tecnología</label>
+                            <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Musica">Música</label>
                             <label><input class="mr-2 mb-10" type="radio" name="favorito" value="Deportes">Deportes</label>
                         </div>
                         <input class="w-full px-3 py-2 bg-blue-500 font-bold text-white rounded-md" type="submit" name="action" value="Enviar">
