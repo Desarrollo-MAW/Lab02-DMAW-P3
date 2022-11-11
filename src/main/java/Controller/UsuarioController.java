@@ -59,10 +59,10 @@ public class UsuarioController extends HttpServlet {
 
                 break;
             case "registrarse":
-                nombre = request.getParameter("nombre");
-                apellido = request.getParameter("apellido");
-                correo = request.getParameter("correo");
-                contra = request.getParameter("contra");
+                nombre = request.getParameter("nombre").toUpperCase();
+                apellido = request.getParameter("apellido").toUpperCase();
+                correo = request.getParameter("correo").toUpperCase();
+                contra = request.getParameter("contra").toUpperCase();
 
                 usuario.setNombre(nombre);
                 usuario.setApellido(apellido);

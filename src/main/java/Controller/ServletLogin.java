@@ -58,14 +58,17 @@ public class ServletLogin extends HttpServlet {
         //Variable tipo Usuario para Iterador
         Usuario userIterator = null;
         
+        HttpSession session = request.getSession();
+        
         try (PrintWriter out = response.getWriter()) {
             if(list.isEmpty()) {
                 String url = "views/login.jsp";
                 String messageContent = "Correo o contraseña incorrecta";
+                session.setAttribute("errorLogin", "true");
                 response.sendRedirect(url+"?message="+messageContent);
             } else {
                 Iterator<Usuario> i = list.iterator();
-                HttpSession session = request.getSession();
+                
                 while(i.hasNext()) {
                     userIterator = i.next();
                     session.setAttribute("correo", userIterator.getCorreo());
@@ -74,6 +77,7 @@ public class ServletLogin extends HttpServlet {
                     session.setAttribute("apellido", userIterator.getApellido());
                     session.setAttribute("admin", userIterator.getAdmin().toString());
                     session.setAttribute("id_usuario", userIterator.getId_usuario());
+                    session.setAttribute("errorLogin", "false");
                     response.sendRedirect("views/");
                 }
             }

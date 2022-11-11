@@ -38,11 +38,17 @@
                 </div>
 
                 <div class="flex flex-col w-full p-10 pt-0">
+                    <!--<span class='ml-2'><//c:out value=""/></span>-->
+                    <%
+                        if (session.getAttribute("errorLogin") != null && session.getAttribute("errorLogin").equals("true")) {
+                    %>
                     <div class='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'>
                         <strong class='font-bold'>¡Error en inicio de sesión!</strong><br>
-                        <!--<span class='ml-2'><//c:out value=""/></span>-->
                         <span class=''><c:out value="Contraseña o correo incorrecto"/></span>
                     </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
